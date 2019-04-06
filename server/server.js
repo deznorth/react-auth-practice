@@ -7,6 +7,9 @@ const config = require('./config/config.json');
 const isDev = process.env.NODE_ENV !== 'production';
 const port  = process.env.PORT || 5000;
 
+//routes
+const signinRoutes = require('./routes/api/signin');
+
 
 // Configuration
 // ================================================================================================
@@ -18,11 +21,10 @@ mongoose.Promise = global.Promise;
 const app = express();
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
+app.use(express.static(path.resolve(__dirname, '../build')));
 
 // API routes
-require('./routes')(app);
-
-app.use(express.static(path.resolve(__dirname, '../build')));
+app.use('/api/account/', signinRoutes);
 
 app.get('*', function (req, res) {
     res.sendFile(path.resolve(__dirname, '../build/index.html'));

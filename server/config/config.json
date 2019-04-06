@@ -1,4 +1,6 @@
 {
     "db": "",
-    "db_dev": "mongodb://localhost:27017/react_auth_practice"
+    "db_dev": "mongodb://localhost:27017/react_auth_practice",
+    "saltRounds": 10,
+    "jwtSecret":"This is a test secret"
 }
