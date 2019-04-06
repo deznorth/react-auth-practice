@@ -19,7 +19,10 @@ auth.checkToken = (req,res,next) => {
             }
         });
     } else {
-        res.status(401).send('must provide token');
+        res.status(401).json({
+            success: false,
+            message: 'Must use token'
+        });
     }
 }
 

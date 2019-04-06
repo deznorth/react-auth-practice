@@ -34,7 +34,6 @@ class LoginPage extends Component {
             switch(success){
                 case true:
                     localStorage.setItem('auth_token', token);
-                    console.log('yas');
                     this.setState({
                         error: undefined,
                         redirect: true

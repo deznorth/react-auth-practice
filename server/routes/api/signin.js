@@ -107,7 +107,10 @@ router.post('/login', (req,res) => {
 
 //test api route
 router.get('/test', auth.checkToken, (req,res) => {
-    res.send('hello there!');
+    res.json({
+        success: true,
+        message: 'Never gonna give you up! Never gonna let you down! Never gonna turn around and desert you!'
+    });
 });
 
 module.exports = router;
