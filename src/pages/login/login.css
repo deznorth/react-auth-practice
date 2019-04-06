@@ -4,12 +4,17 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    padding: 2rem;
+}
+
+#LoginPage h1{
+    margin-bottom: 1.5rem;
 }
 
 #LoginPage form{
     display: flex;
     flex-direction: column;
-    width: 25%;
+    
 }
 
 #LoginPage form input[type="submit"]{
