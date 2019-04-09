@@ -1,6 +1,7 @@
 const express = require('express');
 const mongoose = require('mongoose');
 const path = require('path');
+const cors = require('cors');
 
 const config = require('./config/config.json');
 
@@ -19,6 +20,20 @@ mongoose.connect(isDev ? config.db_dev : process.env.DB_URL, { useNewUrlParser: 
 mongoose.Promise = global.Promise;
 
 const app = express();
+
+// Set up a whitelist and check against it:
+var whitelist = ['https://testfixdavidr.herokuapp.com/', 'http://testfixdavidr.herokuapp.com/']
+var corsOptions = {
+  origin: function (origin, callback) {
+    if (whitelist.indexOf(origin) !== -1) {
+      callback(null, true)
+    } else {
+      callback(new Error('Not allowed by CORS'))
+    }
+  }
+}
+
+app.use(cors(corsOptions));
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 app.use(express.static(path.resolve(__dirname, '../build')));
