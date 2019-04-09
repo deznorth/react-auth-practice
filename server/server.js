@@ -15,7 +15,7 @@ const signinRoutes = require('./routes/api/signin');
 // ================================================================================================
 
 // Set up Mongoose
-mongoose.connect(isDev ? config.db_dev : config.db, { useNewUrlParser: true });
+mongoose.connect(isDev ? config.db_dev : process.env.DB_URL, { useNewUrlParser: true });
 mongoose.Promise = global.Promise;
 
 const app = express();
